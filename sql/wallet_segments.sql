@@ -64,8 +64,7 @@ SELECT SEGMENT,
 		  SELECT F1.FROM AS ADDRESS,
 		  -SUM(F1.VALUE / 1e18) AS VALUE
 		  FROM IMMUTABLE_X."IMXToken_evt_Transfer" F1
-		  GROUP BY 1
-	  ) X
+		  GROUP BY 1) X
 	  
 	  LEFT JOIN
 	  
