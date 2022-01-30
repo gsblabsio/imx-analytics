@@ -1,28 +1,12 @@
 /***
 Author: GSB Labs
-Date written: 2022-01-25
-Objective: classify IMX wallets
+Date written: 2022-01-30
+Objective: count of wallets holding IMX token
 ***/
 
 
-SELECT SEGMENT,
-	CASE
-		WHEN SEGMENT = 'plankton' THEN 1
-	  WHEN SEGMENT = 'shrimp' THEN 2
-	  WHEN SEGMENT = 'seahorse' THEN 3
-	  WHEN SEGMENT = 'oyster' THEN 4
-	  WHEN SEGMENT = 'starfish' THEN 5
-	  WHEN SEGMENT = 'jellyfish' THEN 6
-	  WHEN SEGMENT = 'crab' THEN 7
-		WHEN SEGMENT = 'lobster' THEN 8
-		WHEN SEGMENT = 'octopus' THEN 9
-		WHEN SEGMENT = 'dolphin' THEN 10
-		WHEN SEGMENT = 'shark' THEN 11
-		WHEN SEGMENT = 'whale' THEN 12
-	END RANKINGS,
-	COUNT(*) AS COUNT,
-	ROUND(SUM(AMOUNT), 3) AS AMOUNT,
-	ROUND(100 * (SUM(AMOUNT) / 2e9), 3) AS PERCENT_TOTAL
+SELECT
+	COUNT(*) AS COUNT
 
 FROM
 	(SELECT C.ADDRESS,
@@ -75,7 +59,4 @@ SELECT F1.FROM AS ADDRESS,
 				GROUP BY 1,
 					2
 				HAVING SUM(X.VALUE) > 0) C) FINAL
-GROUP BY 1,2
-ORDER BY 2
-
 ;

@@ -1,10 +1,10 @@
 /***
-Author: GSB Labs, the smartest crypto analytics developers
-Date written: 2022-01-20
+Author: GSB Labs....but the smarter of the 2 :D
+Date written: 2022-01-30
 
-Objective: select all Immutable X price from raw dex.trades table
+Objective: select all Immutable X price from raw dex.trades table and retrieve only the most recent price/volume
 
-Forked from https://dune.xyz/queries/367639/700058
+Forked and edit from https://github.com/gsblabsio/imx-analytics/blob/main/sql/volume_price_by_day.sql
 ***/
 
 
@@ -29,10 +29,11 @@ with dex_trades AS (
         AND category = 'DEX'
 )
 select
-	date_trunc('day', block_time) as time_hour ,
+    dt.block_time,
     sum(usd_amount) as volume_usd,
     (sum(usd_amount)/sum(token_amount_raw))* 1e18 as price_usd
 
-from dex_trades
-group by  date_trunc('day', block_time)
-order by time_hour  desc
+from dex_trades dt
+group by block_time
+order by block_time desc
+limit 1;
