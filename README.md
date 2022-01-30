@@ -4,6 +4,8 @@ This is the code repo for the Immutable X community grant proposal #5: [IMX ecos
 
 It contains the set of SQL queries we developed to parse the Ethereum blockchain and retrieve project statistics for [Immutable X](https://www.immutable.com/).
 
+v1.0 is now live on Dune Analytics: [https://dune.xyz/curbsideprophet/IMX-Analytics](https://dune.xyz/curbsideprophet/IMX-Analytics)
+
 
 ## Nice-to-Have
 
