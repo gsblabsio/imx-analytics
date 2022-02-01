@@ -26,5 +26,5 @@ SELECT F1.FROM AS ADDRESS,
  GROUP BY 1) Z
 
 WHERE ADDRESS = '\xe1d1ad55254b29b43035937894514d0adbac7aea' -- IMX address
-
+and value > 0 
 ;
